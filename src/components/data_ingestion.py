@@ -36,14 +36,15 @@ class DataIngestion:
 
             #Splits the DataFrame df into 80% training and 20% testing data.
             train_set,test_set=train_test_split(df,test_size=0.2,random_state=42)
-            logging.info("Train test split initiated")
+            logging.info("Train test split initiated ")
             #saving the spilited DataFrame df to a CSV file at the location specified by test_data_path (which is 'artifacts/test.csv')
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
-
+            logging.info("test.csv is build successfully")
             #saving the spilited DataFrame df to a CSV file at the location specified by trainst_data_path (which is 'artifacts/train.csv)
             train_set.to_csv(self.ingestion_config.train_data_path,index=False,header=True)
+            logging.info("train.csv is build successfully")
 
-            logging.info("Inmgestion of the data is completed")
+            logging.info("Imgestion of the data is completed")
 
             return (
                 self.ingestion_config.train_data_path,
