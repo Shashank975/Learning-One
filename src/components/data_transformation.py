@@ -60,7 +60,9 @@ class DataTransformation:
         try:
             # Load data
             train_data = pd.read_csv(train_path)
+            print(train_path)
             test_data = pd.read_csv(test_path)
+            print(test_path)
 
             logging.info("Data Got Readed")
 
