@@ -1,1 +1,265 @@
-<h1>Welcome to the home page</h1>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>EduSphere Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --background: #000000;
+            --text: #ffffff;
+            --primary: #ffffff;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .title {
+            font-size: 4.5rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite, glow 2s infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text);
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: var(--text);
+            color: var(--background);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            color: var(--text);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .creator-info {
+            text-align: center;
+        }
+
+        .creator-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--text);
+            object-fit: cover;
+            animation: bounce 2s infinite;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--text);
+            color: var(--background);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 0.9; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="title">EduSphere Pro</h1>
+            <p class="subtitle">Transform Your Learning Experience with Next-Gen Education Platform</p>
+            <div class="cta-buttons">
+                <button class="btn" onclick="window.location.href='/predictdata'">Get Started</button>
+                <button class="btn" onclick="showCreator()">Meet Creator</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="creatorModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="creator-info">
+                <img src="https://via.placeholder.com/150" alt="Creator" class="creator-photo">
+                <h2>Alexandra Techton</h2>
+                <p>Lead Developer & Education Specialist</p>
+                <div style="margin-top: 1.5rem;">
+                    <p>📧 alex@edusphere.pro</p>
+                    <p>📱 +1 (555) 123-4567</p>
+                    <p>🏛️ Computer Science & Education</p>
+                    <p>🚀 8+ Years in EdTech Development</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function showCreator() {
+            document.getElementById('creatorModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('creatorModal').style.display = 'none';
+        }
+
+        // Event listeners
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('creatorModal')) {
+                closeModal();
+            }
+        };
+
+        // Initialize particles
+        function updateParticles() {
+            const particles = document.querySelector('.particles');
+            particles.innerHTML = '';
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: var(--text);
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: float ${10 + Math.random() * 20}s infinite linear;
+                `;
+                particles.appendChild(particle);
+            }
+        }
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', updateParticles);
+    </script>
+</body>
+</html>
